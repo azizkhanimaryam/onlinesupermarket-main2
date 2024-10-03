@@ -1,0 +1,60 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>{% block title %}جزئیات سبد خرید{% endblock %}</title>
+
+   <!-- Load styles -->
+   <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+   <link href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+   <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+   <link href="{% static 'css/general.css' %}" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- https://fontawesome.com/ -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+</head>
+
+{% block body_page %}
+<div class="container">
+    <div class="row">
+        <!-- Right Box: Cart Details -->
+        <div class="col-md-6">
+            <h2>سبد خرید</h2>
+            {% if cart.cart_details.all %}
+                <ul class="list-group">
+                    {% for item in cart.cart_details.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ item.product.name }} ({{ item.quantity }})
+                            <span class="badge badge-primary badge-pill">{{ item.product.price }} تومان</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p>جمع کل: {{ cart.total_price }} تومان</p>
+                <p>هزینه ارسال: {{ delivery_price }} تومان</p>
+            {% else %}
+                <p>سبد خرید شما خالی است.</p>
+            {% endif %}
+        </div>
+
+        <!-- Left Box: Delivery Address and Submit -->
+        <div class="col-md-6">
+            <h2>جزئیات ارسال</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="address">آدرس</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">تلفن</label>
+                    <input type="text" class="form-control" id="phone" name="phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary">تکمیل خرید</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

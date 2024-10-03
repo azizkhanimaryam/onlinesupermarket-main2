@@ -1,0 +1,28 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+{% block title %}
+Your panel
+{{user_st.User}}
+{% endblock %}
+
+{% block User %}
+ {% if user_st.State == True %}
+ You are signed in with
+  {{user_st.User}}
+ <a class="btn btn-danger" href="/auths/LogOut">LogOut</a>
+ {% endif %}
+
+{% if user_st.State == False %}
+Please login
+{% endif %}
+
+{% endblock %}
+
+{% block body_page %}
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/script_panel.js' %}"></script>
+{% endblock %}

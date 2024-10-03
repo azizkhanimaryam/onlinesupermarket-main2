@@ -1,0 +1,57 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+
+{% block title %} صفحه ورود {% endblock %}
+
+{% block titleform %}
+  <h3>خوش آمدید به <strong>گفتینو</strong></h3>
+{% endblock %}
+
+{% block form %}
+   <!-- Updated form action to use Django's URL template tag for better maintainability -->
+   <form action="{% url 'users:checklogin' %}" method="post">
+        {% csrf_token %}
+        {% for item in form %}
+        <div class="form-group first">
+          {{ item.label_tag }}
+          {{ item }}
+        </div>
+        {% endfor %}
+
+        <div class="d-sm-flex mb-5 align-items-center">
+          <label class="control control--checkbox mb-3 mb-sm-0">
+            <span class="caption">مرا به خاطر بسپار</span>
+            <input type="checkbox" name="remember_me" />
+            <div class="control__indicator"></div>
+          </label>
+        </div>
+
+        <!-- Changed input button type to submit for form submission -->
+        <input type="submit" value="ورود" class="btn btn-block btn-primary">
+
+        <div class="text-center">
+          <a href="{% url 'users:register' %}" class="btn btn-block py-2 btn-facebook">
+            ثبت نام
+          </a>
+          <a href="#" class="btn btn-block py-2 btn-google">
+           فراموشی رمز عبور
+          </a>
+        </div>
+   </form>
+{% endblock %}
+
+{% block script %}
+<!-- JavaScript for AJAX login request -->
+<script>
+    $(".checklogin").click(function(){
+         $.ajax({
+             type: "GET",
+             url: "{% url 'users:login_ajax' '' '' %}" + $("#id_UserName").val() + "/" + $("#id_Password").val(),
+             beforeSend: function() { alert("ارسال شد"); },
+             success: function(result) { alert(result); },
+             error: function(e) { console.log(e); }
+         });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>{% block title %}تماس با ما   {% endblock%}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/general.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+
+</head>
+
+
+
+
+{% block body_page %}
+
+   <section class="bg-light shadow py-5">
+       <div dir="rtl">
+    <div class="container text-justify rtl-text">
+        <div class="row align-items-center py-5">
+
+            <!-- Text Container -->
+            <div class="col-md-6 text-dark text-justify rtl-text" style="padding-left: 30px; padding-right: 60px">
+            <h1 style="color: rgb(50, 50, 50); padding: 10px; border-radius: 5px; display: inline-block;">
+        تماس با ما
+            </h1>
+            <h5 style="background-color: white; padding: 10px; border-radius: 5px; display: inline-block;">
+             <p>
+                 <div dir="rtl">
+                    <br><span style="color: dark;">مشتریان گرامی‌ در صورت هرگونه ابهام یا سوال احتمالی‌ میتوانند به بخش سوال‌های متداول رجوع کنند. در صورتیکه پاسخ سوال خود را نیافتند میتوانند سوال خود را به بخش پشتیبانی‌ مشتریان به آدرس support@citysupermarket.com ارسال کنند، یا با شماره(+۹۸)۲۱۸۸۴۴۱۹۰۹ تماس حاصل نمایند.</span>
+                    <br/>
+                    <br><span style="color: black;">سوپرمارکت شهر در حال حاضر همه روزه از ساعت ۸:۳۰ تا ۱۹ آماده خدمات به مشتریان خود است. در صورت تعطیلات احتمالی‌، از قبل به مشتریان گرامی‌ از طریق شبکه‌های اجتماعی و سامانه پیامکی اطلاع داده میشود.</span><br/>
+
+                    <br><span style="color: dark;">امور مشتریان: تهران، خیابان سهروردی شمالی، کوچه قدس (اندیشه دوم)، پلاک ۶۴.</span>
+                    <br/>
+                    <br><span style="color: black;">  تلفن: 02135766464
+                                 </span><br/>
+
+                    <br><span style="color: blue;">  پست الکترونیکی :support@onlinemarket.com</span><br/>
+                                  </div>
+                </p></h5>
+            </div>
+            <!-- Image Container -->
+            <div class="col-md-6">
+                <img src="{% static 'img/contact.png' %}"  class="img-fluid mx-auto d-block">
+            </div>
+        </div>
+    </div>
+       </div>
+</section>
+
+    <!-- Close Banner -->
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/templatemo.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}
+
+

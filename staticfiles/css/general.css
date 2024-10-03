@@ -1,0 +1,13 @@
+.img-fluid {
+    max-height: 100%; /* Ensure image fits within its container */
+}
+
+.container{
+    text-align: justify;
+    direction: rtl;
+}
+#cart-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 20px;
+}

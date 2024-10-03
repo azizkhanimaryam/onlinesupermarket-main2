@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Details</title>
+</head>
+<body>
+    <h1>Cart Details</h1>
+    <p>ID: {{ cart.id }}</p>
+    <p>User: {{ cart.user.email }}</p>
+    <p>Total Price: {{ cart.total_price }}</p>
+    <p>Delivery Address: {{ cart.delivery_address }}</p>
+    <p>Delivery Date: {{ cart.delivery_date }}</p>
+    <p>Delivery Status: {{ cart.delivery_status }}</p>
+
+    <h2>Items in Cart</h2>
+    <ul>
+        {% for detail in cart.cart_details.all %}
+            <li>{{ detail.product.name }} - Quantity: {{ detail.quantity }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'cart-list' %}">Back to Cart List</a>
+</body>
+</html>

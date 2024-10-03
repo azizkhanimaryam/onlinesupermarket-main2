@@ -1,0 +1,79 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}صفحه ورود {% endblock %}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/general.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/style_auths.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+</head>
+
+{% block body_page %}
+{% block titleform %}
+<div dir="rtl">
+  <div style="height: 90vh; width: 100%; display: flex; flex-direction: column; justify-content: center;">
+    <div class="text-center my-4">
+      <h3>به <strong>سوپرمارکت آنلاین شهر</strong> خوش آمدید!</h3>
+    </div>
+  {% endblock %}
+  
+  {% block form %}
+  <div class="container d-flex justify-content-center mb-4 align-items-center">
+    <div class="card p-4 shadow" style="max-width: 600px; width: 100%;">
+      <!-- Form action updated to custom_login -->
+  <form action="{% url 'users:login' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group first">
+          <label for="id_email">ایمیل</label>
+          <input type="email" id="id_email" name="email" class="form-control" required>
+      </div>
+  
+      <div class="form-group last mb-3">
+          <label for="id_password">رمز عبور</label>
+          <input type="password" id="id_password" name="password" class="form-control" required>
+      </div>
+  
+      <input type="submit" value="ورود" class="btn btn-block btn-primary">
+  </form>  </div>
+  </div>
+  </div>
+{% endblock %}
+{% endblock %}
+
+{% block script %}
+<!-- JavaScript for AJAX login request -->
+<script>
+   $(".checklogin").click(function(){
+         $.ajax({
+             type: "POST",  // Changed to POST
+             url: "{% url 'users:login_ajax' %}",
+             data: {
+                email: $("#id_email").val(),  // Use 'email' and 'password' keys
+                password: $("#id_password").val()
+             },
+             beforeSend: function() { alert("ارسال شد"); },
+             success: function(result) { alert(result.status); },
+             error: function(e) { console.log(e); }
+         });
+    });
+</script>
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/templatemo.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}
+</div>

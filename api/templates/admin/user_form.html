@@ -1,0 +1,15 @@
+<!-- templates/admin/user_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% if user %}Edit User {% else %}Add User {% endif %}</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">
+        {% if user %}Update{% else %}Create{% endif %}
+    </button>
+</form>
+{% endblock %}

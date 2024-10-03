@@ -1,0 +1,16 @@
+<!-- templates/admin/categories_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Category List</h1>
+  <a href="{% url 'custom-admin-category-create' %}">Add Category</a>
+  <ul>
+    {% for category in categories %}
+      <li>{{ category.name }} (Created by: {{ category.created_by.email }})
+        <a href="{% url 'custom-admin-category-edit' category.id %}">Edit</a>
+      </li>
+    {% empty %}
+      <li>No categories available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+<head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>{% block title %}لیست محصولات  {% endblock%}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/general.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+</head>
+
+{% block body_page %}
+<div class="container" style="min-height: 80vh; padding-top: 50px;">
+    <div dir="rtl" class="row">
+        <!-- Product List -->
+        <div class="col-md-9">
+            <h1>محصولات در دسته بندی {{ category.name }}</h1>
+            <p>تعداد محصولات: {{ products.count }}</p>
+            <div class="row">
+                {% if products %}
+                    {% for product in products %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static 'img/placeholder.png' %}" class="card-img-top" alt="{{ product.name }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ product.name }}</h2>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <p class="card-text">قیمت: {{ product.price }} تومان</p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{% url 'product_detail' product_id=product.id %}" class="btn btn-primary">ویژگی های محصول</a>
+                                        <form action="{% url 'cart:add_to_cart' product.id %}" method="POST" class="ml-2">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-success">+</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No products available in this category.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Cart Sidebar -->
+        <div class="col-md-3">
+            <h2>سبد خرید</h2>
+            <div id="cart-box" class="border p-3">
+                {% if cart and cart.cart_details.all %}
+                    <ul class="list-group">
+                        {% for item in cart.cart_details.all %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ item.product.name }} ({{ item.quantity }})
+                                <span class="badge badge-primary badge-pill">{{ item.product.price }} تومان</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <p>جمع کل: {{ total_price }}Debugging  تومان</p>
+                    <a href="{% url 'product_list_by_category' cart.cart_details.first.product.category.id %}" class="btn btn-secondary">ادامه خرید</a>
+                    <a href="{% url 'cart:checkout' %}" class="btn btn-primary">تکمیل خرید</a>
+                {% else %}
+                    <p>سبد خرید شما خالی است.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- product_form.html -->
+
+<h1>{% if product %}Edit Product{% else %}Add Product{% endif %}</h1>
+
+<form method="POST" action="{% url 'custom-admin-product-create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+

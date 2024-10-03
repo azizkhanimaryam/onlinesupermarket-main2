@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'vz';
+    src: url(iransans/ttf/IRANSansWeb\(FaNum\)_Medium.ttf);
+    font-display: swap;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    justify-content: flex-start; /* Aligns items to the left */
+    gap: 20px; /* Adds space between the social media icons and the text */
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between the icons */
+}
+
+.social-media img {
+    width: 24px; /* Adjust the size of the icons */
+    height: auto;
+}
+
+.responsiveSocialText {
+    margin-left: 10px; /* Space between the text and icons */
+    font-size: 14px; /* Adjust the size of the text */
+    white-space: nowrap; /* Prevent text from wrapping to a new line */
+}
+.container {
+    width: 100%;
+    padding: 0 20px; /* Optional: add horizontal padding to the container */
+}
+
+.bottom-links {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between items */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines if necessary */
+    width: 100%; /* Ensure it takes up the full width of its container */
+}
+
+.bottom-links a {
+    flex: 1; /* Make each link take up an equal amount of space */
+    text-align: center; /* Center the text inside each link */
+    margin: 0 10px; /* Optional: Add horizontal margin between items */
+}
+
+.bottom-links h3 {
+    margin: 0; /* Remove default margin from h3 */
+}
+
+.social-media {
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    margin-top: 20px; /* Adjust this value to increase the distance */
+}
+
+.social-media a {
+    margin: 0 10px; /* Optional: Add horizontal margin between icons */
+}
+
+.social-media img {
+    width: 60px; /* Adjust size of icons if needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.larger-text {
+    font-size: 1.75rem; /* Adjust size as necessary */
+}
+
+
+
+
+.slider {
+    width: 100%; height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.slide {
+    position: absolute;
+    transition: left 0.5s ease;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+.slider-slides {
+    position: relative;
+    display: flex;
+    width: 100%; height: 100%;
+    overflow: hidden;
+}
+.slider-slides div {
+    width: 100%; height: 100%;
+}
+.slider-slides div img {
+    height: 100%;
+}
+
+
+
+.slider__btn {
+    width: 45px; height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #b6b6b6;
+    user-select: none;
+}
+
+.slider-btns {
+    display: none;
+    gap: 12px;
+    position: absolute;
+    right: 100px; bottom: 100px;
+}
+.slider:hover>.slider-btns {
+    display: flex;
+}

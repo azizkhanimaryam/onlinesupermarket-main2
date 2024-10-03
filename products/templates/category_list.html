@@ -1,0 +1,17 @@
+{% extends 'layout_bikeproducts.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>دسته بندی ها</h1>
+    <ul>
+        {% if categories %}
+            {% for category in categories %}
+                <li><a href="{% url 'product_list_by_category' category.id %}">{{ category.name }}</a></li>
+            {% endfor %}
+        {% else %}
+            <li>هیچ دسته‌بندی‌ای موجود نیست.</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!-- templates/admin/category_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% if category %}Edit Category{% else %}Add Category{% endif %}</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">
+        {% if comment %}Update{% else %}Create{% endif %}
+    </button>
+</form>
+{% endblock %}

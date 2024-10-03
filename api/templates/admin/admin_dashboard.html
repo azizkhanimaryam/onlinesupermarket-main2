@@ -1,0 +1,108 @@
+<!-- admin_dashboard.html -->
+
+<h1>Admin Dashboard</h1>
+
+<!-- Search form -->
+<form method="GET" action="{% url 'custom-admin-product-list' %}">
+    <input type="text" name="q" placeholder="Search by name" value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<!-- Links to manage different entities -->
+<h2>Manage Products</h2>
+<a href="{% url 'admin-products-list' %}">Go to Products</a>
+<a href="{% url 'admin-product-create' %}">Add Product</a>
+{% if product_list %}
+    <ul>
+        {% for product in product_list %}
+            <li>
+                {{ product.name }}
+                <a href="{% url 'admin-product-edit' product.id %}">Edit</a>
+                <form action="{% url 'admin-product-delete' product.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No products found.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h2>Manage Categories</h2>
+<a href="{% url 'admin-category-create' %}">Add Category</a>
+{% if category_list %}
+    <ul>
+        {% for category in category_list %}
+            <li>
+                {{ category.name }}
+                <a href="{% url 'admin-category-edit' category.id %}">Edit</a>
+                <form action="{% url 'admin-category-delete' category.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No categories found.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h2>Manage Comments</h2>
+<a href="{% url 'admin-comment-create' %}">Add Comment</a>
+{% if comment_list %}
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                {{ comment.content }}
+                <a href="{% url 'admin-comment-edit' comment.id %}">Edit</a>
+                <form action="{% url 'admin-comment-delete' comment.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No comments found.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h2>Manage Users</h2>
+<a href="{% url 'admin-user-create' %}">Add User</a>
+{% if user_list %}
+    <ul>
+        {% for user in user_list %}
+            <li>
+                {{ user.email }}
+                <a href="{% url 'admin-user-edit' user.id %}">Edit</a>
+                <form action="{% url 'admin-user-delete' user.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No users found.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h2>Manage Carts</h2>
+<a href="{% url 'admin-cart-create' %}">Add Cart</a>
+{% if cart_list %}
+    <ul>
+        {% for cart in cart_list %}
+            <li>
+                Cart ID: {{ cart.id }}
+                <a href="{% url 'admin-cart-edit' cart.id %}">Edit</a>
+                <form action="{% url 'admin-cart-delete' cart.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No carts found.</li>
+        {% endfor %}
+    </ul>
+{% endif %}

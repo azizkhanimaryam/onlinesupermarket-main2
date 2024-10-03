@@ -1,0 +1,67 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>{% block title %}درباره ما  {% endblock%}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/general.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+</head>
+
+{% block body_page %}
+   <section class="bg-light shadow py-5">
+    <div class="container text-justify rtl-text">
+        <div class="row align-items-center py-5">
+            <!-- Image Container -->
+            <div class="col-md-6">
+                <img src="{% static 'img/aboutus.png' %}"  class="img-fluid mx-auto d-block">
+            </div>
+            <!-- Text Container -->
+
+            <div class="col-md-6 text-dark text-justify rtl-text">
+                <div dir="rtl">
+                    <h1 style="color: rgb(50, 50, 50); padding: 10px; border-radius: 5px; display: inline-block;">
+                        درباره ما
+                    </h1>
+                </div>
+                <h4 style="color: rgb(50, 50, 50); padding: 10px; border-radius: 5px; display: inline-block;">
+                <div dir="rtl">
+                <p>
+                    فروشگاه اینترنتی شهر همواره حامی سوپرمارکت های محله بوده و همواره در تلاش بوده تا به فروش بالای آنها کمک شایانی کند.
+                فروشگاه اینترنتی شهر همواره حامی سوپرمارکت های محله بوده و همواره در تلاش بوده تا به فروش بالای آنها کمک شایانی کند.
+                به  سوپرمارکت آنلاین شهر خوش آمدید. سوپرمارکت آنلاین شهر رابطی بین شما و سوپرمارکت محله تان است. شما می توانید به سادگی با مشخص کردن موقعیت آدرس خود، اجناس سوپرمارکت های نزدیک خودتان را مشاهده کنید و به سادگی خرید خود را انجام دهید. سفارش شما در کوتاه ترین زمان ممکن و به صورت رایگان، توسط پیک فروشگاه، برایتان ارسال خواهد شد. تزول مارکت همواره تمامی نیازهای روزمره شما را برای خرید اینترنتی انواع محصولات سوپرمارکتی از خواروبار گرفته تا انواع مواد غذایی، لبنیات، نوشیدنی ها، محصولات شوینده بهداشتی زیبایی، انواع کنسرو و غذای اماده تا خرید لوازم مصرفی فرهنگی را برای شما عزیزان فراهم نموده تا با تنوع بالای محصولات تزول تجربه خرید آنلاین آسانی را در ذهن شما به یاد ماندنی کند. ویترین فروشگاه اینترنتی تزول شامل کالاهای اساسی و نیازهای روزانه شما از انواع برندهای ایرانی و خارجی تضمین شده از جمله محصولات شرکتهای معتبری همچون کاله، چوپان، پریل، میهن، دامداران، کوکاکولا، مهرام، لادن، چی توز، ماهشام، شیلتون، سن ایچ، پرسیل، نامی نو و ... است و شما می توانید با صرفه جویی در وقت و انرژی و هزینه های ناشی از آن با خاطری آسوده اقدام به خرید اینترنتی اقلام مورد نیاز خانواده خود از خرید انواع محصولات اساسی زندگی خود از برنج، چای، روغن، حبوبات و ادویه جات و محصولات پروتئینی گرفته تا خرید انواع لبنیات از جمله شیر، ماست، پنیر، خامه، کره، کشک تا تکمیل میز صبحانه شما با اقسام مختلف چای، قهوه، آبمیوه، مربا، عسل، حلوا شکری و شکلات ها. این سوپرمارکت در کمترین بازه ی زمانی سفارش شما را با تضمین بهترین کیفیت و به صورت پرداخت نقدی یا آنلاین به انتخاب خودتان و با پیک رایگان به شما ارائه می دهد. سوپرمارکت آنلاین شهر به بیش از 1500 سوپر مارکت در سطح تهران متصل است؛ فروشگاه اینترنتی شهر همواره حامی سوپرمارکت های محله بوده و همواره در تلاش بوده تا به فروش بالای آنها کمک شایانی کند.
+                </p>
+                </div>
+                </h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Close Banner -->
+
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/templatemo.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}
+
+

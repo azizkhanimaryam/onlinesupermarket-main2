@@ -1,0 +1,112 @@
+<!DOCTYPE html> <!-- This ensures Standards Mode -->
+{% load static %} <!-- Load the static files handling tag -->
+{% load i18n %}
+<html lang="fa"> <!-- Setting the language to Persian (RTL support) -->
+
+    <meta charset="UTF-8"> <!-- Proper character encoding for Persian text -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- For responsive design -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Compatibility for IE -->
+
+    <!-- Your existing styles and fonts -->
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/styles.css' %}" rel="stylesheet"> <!-- Your custom styles with the BNazanin font -->
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'css/nav.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- FontAwesome -->
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"> <!-- Google Fonts -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+<!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-danger navbar-light d-none d-lg-block" dir="rtl" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-application mx-2"></i>
+                    <a class="navbar-sm-brand text-white text-decoration-none larger-text" dir="rtl" href="tel:010-020-0340"> تماس با پشتیبانی 0098-020-021 </a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-white text-decoration-none" dir="rtl" href="onlinesupermarket@gmail.com">دانلود اپلیکیشن </a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Top Nav -->
+
+        <!-- header -->
+        
+
+          <div class="main-navbar" style="top: 0; right: 0; left: 0; display: flex; width: 100%; flex-direction: column; width: 100%; background-color: white; z-index: 999; border-bottom: 1px solid rgba(128, 128, 128, 0.432);">
+            <div class="desktop-navbar">
+                <div>
+                    <a href="{% url 'home' %}" style="font-size: 30px !important; text-decoration: none; color: #222;">سوپرمارکت شهر</a>
+                </div>
+                <form class="sec-search" method="GET" action="{% url 'products:product_search' %}" style="width: auto; padding: 20px 100px; display: flex;">
+                    <input type="search" id="inputDesktopSearch" name="q" style="all: unset; border: 1px solid rgba(128, 128, 128, 0.61); width: 500px; border-radius: 10px; padding: 7px 18px;" placeholder="جستجو کنید..">
+                    <button style="all: unset; border: 1px solid rgba(128, 128, 128, 0.61); padding: 7px 10px; border-radius: 10px; margin-right: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        <!-- <img src="{% static 'img/ico/search.png' %}" alt=""> -->
+                         <i class="fa fa-fw fa-search"></i>
+                    </button>
+                </form>
+                <div style="display: flex; gap: 40px; align-items: center;">
+                    <div style="display: flex; gap: 10px;">
+                        {% if user.is_authenticated %}
+                <span class="text-black mx-2">{{ user.username }}</span>
+                <a class="btn btn-outline-danger mx-1" href="{% url 'users:logout' %}">خروج</a>
+            {% else %}
+                <a href="{% url 'users:register' %}">
+                    <button class="btn btn-outline-dark mx-1">
+                        ثبت نام
+                    </button>
+                </a>
+                <a href="{% url 'users:login' %}">
+                    <button class="btn btn-dark ml-3">
+                        ورود
+                    </button>
+                </a>
+            {% endif %}
+                    </div>
+                    <a href="{% url 'cart:checkout' %}">
+                        <img src="{% static 'img/ico/cart.png' %}" width="40px" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="mob-search">
+                <form action="{% url 'products:product_search' %}" method="get" style="width: 100%; padding: 20px 10px; display: flex;">
+                    <input type="search" id="inputDesktopSearch" name="q" style="all: unset; border: 1px solid rgba(128, 128, 128, 0.61); width: 100%; border-radius: 10px; padding: 7px 18px;" placeholder="جستجو کنید..">
+                    <button style="all: unset; border: 1px solid rgba(128, 128, 128, 0.61); padding: 7px 10px; border-radius: 10px; margin-right: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                        <!-- <img src="{% static 'img/ico/search.png' %}" alt=""> -->
+                         <i class="fa fa-fw fa-search"></i>
+                    </button>
+                </form>
+            </div>
+          </div>
+<!-- <header class="navbar navbar-expand-lg navbar-light shadow" dir="rtl">
+    <div class="container d-flex justify-content-between align-items-center">
+        <ul class="nav navbar-nav d-flex justify-content-center flex-nowrap w-100">
+            <li class="nav-item flex-grow-1 text-center">
+                <a class="nav-link h3" href="{% url 'home' %}">
+                    <i class="fas fa-home text-danger"></i>
+                </a>
+            </li>
+            {% for category in categories %}
+                <li class="nav-item flex-grow-1 text-center">
+                    <a class="nav-link h3 category-link" href="{% url 'products:product_list_by_category' category.id %}">{{ category.name }}</a>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</header> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</html>

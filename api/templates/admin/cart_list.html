@@ -1,0 +1,32 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block content %}
+<h1>Cart List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Total Price</th>
+            <th>Delivery Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cart in carts %}
+        <tr>
+            <td>{{ cart.user.email }}</td>  <!-- Showing user email instead of object -->
+            <td>{{ cart.total_price }}</td>
+            <td>{{ cart.get_delivery_status_display }}</td>  <!-- Assuming delivery_status is a choice field -->
+            <td>
+                <a href="{% url 'custom-admin-cart-detail' cart.id %}">View</a> |
+                <a href="{% url 'custom-admin-cart-edit' cart.id %}">Edit</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No carts available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

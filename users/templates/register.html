@@ -1,0 +1,92 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>{% block title %}صفحه ثبت نام  {% endblock%}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link  href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/general.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/bootstrap/style_auths.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+</head>
+
+
+{% block body_page %}
+{% block titleform %}
+<div dir="rtl">
+  <div class="text-center my-4">
+    <h3>به مجموعه بزرگ <strong>سوپرمارکت آنلاین شهر</strong> بپیوندید!</h3>
+  </div>
+
+  <div class="container d-flex justify-content-center">
+    <div class="card p-4 shadow" style="max-width: 600px; width: 100%;">
+      <form action="{% url 'users:registerAction' %}" method="post">
+        {% csrf_token %}
+        <table class="table table-borderless">
+          <tbody>
+            {% for item in form %}
+              <tr>
+                <td>{{ item.label_tag }}</td>
+                <td>{{ item }}</td>
+                <td style="color: red;">{{ item.errors }}</td> <!-- Show field-specific errors -->
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- Display non-field errors -->
+        {% if form.non_field_errors %}
+        <div style="color: red;">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+          <input type="submit" value="ثبت نام" class="btn btn-primary btn-block w-100">
+        </div>
+
+        <div class="text-center mt-3">
+          <a href="{% url 'users:login' %}" class="btn btn-outline-secondary btn-block w-100">
+            ورود
+          </a>
+        </div>
+      </form>
+
+      {% if success_message %}
+      <div class="alert alert-success mt-4">
+        {{ success_message }} <!-- Display success message -->
+        <a href="{% url 'users:login' %}" class="btn btn-success mt-2">لطفا برای ورود کلیک کنید</a> <!-- Redirect button -->
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% endblock %}
+
+
+
+{% block script %}
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/templatemo.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}
+
+
+

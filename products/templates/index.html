@@ -1,0 +1,268 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} خانه {% endblock %}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <style>
+        
+    </style>
+</head>
+
+{% block body_page %}
+
+    <!-- Start Banner Hero -->
+    <div class="slider" id="slider">
+        <div class="slider-slides" id="slider-slides">
+            <div class="slide" style="left: 0; background-image: url('{% static 'img/slider/1.webp' %}');">
+                <!-- <img src="{% static 'img/slider/1.webp' %}" alt="">  -->
+            </div>
+            <div class="slide" style="left: 100%; background-image: url('{% static 'img/slider/2.webp' %}');">
+                <!-- <img src="img/slider/2.webp" alt=""> -->
+            </div>
+            <div class="slide" style="left: 200%; background-image: url('{% static 'img/slider/3.webp' %}');">
+                <!-- <img src="img/slider/3.webp" alt=""> -->
+            </div>
+            <div class="slide" style="left: 300%; background-image: url('{% static 'img/slider/4.webp' %}');">
+                <!-- <img src="img/slider/4.webp" alt=""> -->
+            </div>
+            <div class="slide" style="left: 400%; background-image: url('{% static 'img/slider/5.webp' %}');">
+                <!-- <img src="img/slider/5.webp" alt=""> -->
+            </div>
+            <div class="slide" style="left: 500%; background-image: url('{% static 'img/slider/6.webp' %}');">
+                <!-- <img src="img/slider/6.webp" alt=""> -->
+            </div>
+        </div>
+        <div class="slider-btns">
+            <div class="slider__btn" style="rotate: 180deg;" id="sliderBtnRight" onclick="sliderGoRight()">
+                <img src="{% static 'img/ico/left-arrow.png' %}" alt="#">
+            </div>
+            <div class="slider__btn" id="sliderBtnLeft" onclick="sliderGoLeft()">
+                <img src="{% static 'img/ico/left-arrow.png' %}" alt="#">
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Hero -->
+
+<!-- Start Section -->
+
+    <div class="our-services">
+        <div class="our-services__title">
+            خدمات ما
+        </div>
+        <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+            <div class="our-services__service">
+                <img src="{% static 'img/our-services/service.png' %}" width="80px" alt="">
+                خدمات 24 ساعته
+            </div>
+            <div class="our-services__service">
+                <img src="{% static 'img/our-services/percentage (2).png' %}" width="80px" alt="">
+                تخفیف های ویژه
+            </div>
+            <div class="our-services__service">
+                <img src="{% static 'img/our-services/tick (2).png' %}" width="80px" alt="">
+                پوشش کامل شهر و قبول مرجوعی
+            </div>
+            <div class="our-services__service">
+                <img src="{% static 'img/our-services/shipped.png' %}" width="80px" alt="">
+                ارسال رایگان
+                <br>
+برای خریدهای بالای 100 هزار تومان
+            </div>
+        </div>
+    </div>
+    <!-- End Section -->
+    <a href="#" class="float-btn spmrkt">
+        <p style="margin: 0 0 0 7px; font-size: 16px;">ارتباط با پشتیبانی سوپرمارکت</p>
+    </a>
+<section class="section-two">
+    <h2 style="text-align: center; display: block;">دسته بندی ها</h2>
+    <div class="row my-4">
+        <div class="col-12">
+        <div class="row d-flex my-lg-3 justify-content-center">
+        {% for category in categories %}
+        {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+        </div>
+        </div>
+        <div class="col-12">
+        <div class="row d-flex my-lg-3 justify-content-center">
+        {% endif %}
+
+        <a href="{% url 'product_list_by_category' category.id %}" class="col-10 col-sm-3 section-two__lans mx-3 my-2">
+            <div class="w-100 h-100 d-flex justify-content-evenly align-items-center" style="background-image: url('{{ category.image.url }}'); background-size: cover; background-position: center;">
+            <div class="section-two-txt fw-bold text-white">
+                {{ category.name }}
+            </div>
+            </div>
+        </a>
+
+        {% if forloop.last %}
+        </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+<!-- End Categories Section -->
+
+{% endblock %}
+
+{% block script %}
+<script>
+    // Slider
+const slides = document.querySelectorAll('.slide');
+const slider = document.getElementById('slider-slides');
+let sliderBtnRight = document.getElementById('sliderBtnRight');
+let sliderBtnLeft = document.getElementById('sliderBtnLeft');
+let currentIndex = 0;
+const totalSlides = slides.length;
+let isDragging = false;
+let startX, currentX;
+    // ----- Select Elements
+let datetime = document.getElementById('date');
+let menuContainer = document.querySelector('.nav__nav-links-container');
+let linksContainer = document.querySelector('.nav__nav-links');
+let scrollLinks = document.querySelectorAll('.scroll-Links');
+let nav = document.querySelector('.nav');
+let topLink = document.querySelector('.GoTop');
+
+// ----- Set Year -----
+datetime.innerHTML = new Date().getFullYear();
+
+// ----- Function Show/Hide Navbar -----
+function showHide(){
+    document.getElementById('nav-links').classList.toggle('showTheNavbar');
+    let menuContainerHeight = menuContainer.getBoundingClientRect().height;
+    let linksContainerHeight = linksContainer.getBoundingClientRect().height;
+    if(menuContainerHeight === 0){
+        menuContainer.style.height = `${linksContainerHeight}px`;
+    } else {
+        menuContainer.style.height = 0;
+    }
+}
+
+// ----- Scroll Conditions -----
+window.addEventListener('scroll',function(){
+    if (window.pageYOffset > nav.getBoundingClientRect().height){
+        nav.classList.add('nav-fixed')
+    } else {
+        nav.classList.remove('nav-fixed')
+    }
+    if (window.pageYOffset > 1500){
+        topLink.classList.add('Show-TopLink')
+    } else {
+        topLink.classList.remove('Show-TopLink')
+    }
+});
+
+// ----- Smooth Links -----
+scrollLinks.forEach(function(link){
+    link.addEventListener('click',function(l){
+        l.preventDefault();
+        const linkId = l.currentTarget.getAttribute('href').slice(1);
+        let targetSection = document.getElementById(linkId);
+        let navHeader = document.querySelector('.nav__nav-header');
+        let position = targetSection.offsetTop - (navHeader.getBoundingClientRect().height + 30);
+        let isNavFixed = nav.classList.contains('nav-fixed');
+        window.scrollTo({
+            left:0,
+            top:position
+        })
+        if (menuContainer.getBoundingClientRect().height > 0){
+            menuContainer.style.height = 0;
+        }
+    })
+});
+
+
+
+
+
+
+function sliderGoRight() {
+    if ((currentIndex + 1) > 5) {
+        currentIndex = 0;
+    } else {
+        currentIndex += 1;
+    }
+    updateSlides()
+    
+}
+function sliderGoLeft() {
+    if ((currentIndex - 1) < 0) {
+        currentIndex = 5;
+    } else {
+        currentIndex -= 1;
+    }
+    updateSlides()
+}
+
+slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    console.log('downe');
+    
+});
+
+slider.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    currentX = e.pageX;
+    const diffX = startX - currentX;
+
+    console.log('movee');
+    updateSlides();
+    if (diffX > 50) {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlides();
+        isDragging = false;
+    } else if (diffX < -50) {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlides();
+        isDragging = false;
+    }
+});
+
+slider.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+slider.addEventListener('mouseleave', () => {
+    isDragging = false;
+});
+
+function updateSlides() {
+    slides.forEach((slide, index) => {
+        slide.style.left = `${(index - currentIndex) * 100}%`;
+    });
+}
+
+setInterval(() => {
+    if ((currentIndex + 1) > 5) {
+        currentIndex = 0;
+    }
+    currentIndex += 1
+    slides.forEach((slide, index) => {
+        slide.style.left = `${(index - currentIndex) * 100}%`;
+    });
+},3000);
+</script>
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/templatemo.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}
+

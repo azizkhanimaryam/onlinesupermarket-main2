@@ -1,0 +1,15 @@
+<!-- templates/admin/comment_form.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% if comment %}Edit Comment {% else %}Add Comment{% endif %}</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">
+        {% if product %}Update{% else %}Create{% endif %}
+    </button>
+</form>
+{% endblock %}

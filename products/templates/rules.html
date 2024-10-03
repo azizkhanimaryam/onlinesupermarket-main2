@@ -1,0 +1,83 @@
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title>{% block title %}قوانین و مقررات {% endblock%}</title>
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/templatemo.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link  href="{% static 'css/general.css' %}" rel="stylesheet">
+
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+
+</head>
+
+
+
+
+{% block body_page %}
+
+   <section class="bg-light shadow py-5">
+    <div class="container text-justify rtl-text">
+        <div class="row align-items-center py-5">
+            <!-- Image Container -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="{% static 'img/rules.png' %}" class="img-fluid mx-auto d-block">
+            </div>
+
+            <!-- Text Container -->
+            <div class="col-md-6 text-dark text-justify rtl-text" style="padding-left: 30px; padding-right: 60px">
+              <div dir="rtl">
+                <h1 style="color: rgb(50, 50, 50); padding: 10px; border-radius: 5px; display: inline-block;">
+        قوانین و مقررات
+            </h1>
+              </div>
+            <h5 style="color: rgb(51, 51, 51); padding: 10px; border-radius: 5px; display: inline-block;">
+                <div dir="rtl">
+                <p>
+                توجه داشته باشید کلیه اصول و رویه‏‌های شهر‌مارکت منطبق با قوانین جمهوری اسلامی ایران، قانون تجارت الکترونیک و قانون حمایت از حقوق مصرف کننده است و متعاقبا کاربر نیز موظف به رعایت قوانین مرتبط با کاربر است.
+                <br>در صورتی که در آینده تغییراتی در قوانین مندرج، رویه‏‌ها و سرویس‏‌های شهر‌مارکت ایجاد شود، در همین صفحه منتشر و به روز رسانی می شود.
+                <br/>
+                <br>1. رعایت حریم شخصی
+                شهر برای حریم شخصی‌ افراد احترام قائل است. بدین منظور اطلاعاتی‌ که از کاربران برای ثبت نام دریافت میشود به هیچ عنوان در اختیار شخص یا سازمانی قرار نخواهد گرفت و کاملا محرمانه است. مسئولیت حفظ و نگهداری رمز عبور به عهده کاربر می‌باشد، لذا از در اختیار گذاشتن رمز عبور خود به افراد دیگر خودداری کنید.<br/>
+                                    <br>2.شهر مارکت هم اکنون هیچ فروشگاهی ندارد، خدمات قابل ارائه از طریق دفتر مرکزی پردازش می‏‌شود. لطفاً در صورت مشاهده هر گونه تخلفی از این دست، مراتب را جهت پیگرد قانونی به روابط عمومی شهر مارکت اطلاع دهید.<br/>
+                                    <br>	3. عودت کالا
+                در صورتیکه کالای ارسال شده با سفارش شما مغایرت دارد، تاریخ انقضای آن گذشته است و یا مهلت مصرف آن کوتاه است، می‌توانید یک یا همه اجناس سبد خرید را مرجوع کنید. در صورتیکه گزینه "پرداخت در محل" را انتخاب کرده باشید، میتوانید از پرداخت صورتحساب خودداری کنید و اگر پرداخت را به صورت آنلاین انجام دادید با ارسال کد سفارش به سامانه خدمات مشتریان، با شما تماس گرفته می‌شود و پیگیری از این طریق انجام می‌شود.<br/>
+                                    <br>	4. ارتباطات
+                هرگونه اطلاعاتی که در هنگام ثبت نام از جمله شماره‌ی تماس و پست الکترونیکی در اختیار ما در شهر‌مارکت قرار می‌دهید، تنها اطلاعات رسمی و مورد تایید مشتری و هم‌چنین راه‌های ارتباطی ما و شما، جهت پاسخگویی و ارائه‌ی اطلاعیه‎‌ها به شما عزیزان خواهد بود. توجه داشته باشید تنها شماره‌ی سامانه‌ی پیامکی شهر‌مارکت 50004624(98+) و 88451277(98+) است. بنابراین ارسال هرگونه پیامک تحت عنوان شهر‌مارکت، با هر شماره دیگری تخلف و سوء استفاده از نام شهر‌مارکت است و در صورت دریافت چنین پیامکی، لطفاً جهت پیگیری قانونی آن را به support@tezolmarket.com اطلاع دهید.<br/>
+                                    <br>در صورت داشتن هرگونه سوال درباره حقوق کاربران میتوانید با شماره تلفن و یا پست الکترونیک ارتباط برقرار کنید.
+                <br/>
+                      <br>
+                 امور مشتریان: تهران، خیابان سهروردی شمالی، کوچه قدس (اندیشه دوم)، پلاک ۶۴.
+                 : تلفن (+۹۸)۲۱۸۸۴۴۱۹۰۹
+                 پست الکترونیکی :support@tezolmarket.com<br/>
+                                </p></div></h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Close Banner -->
+
+   
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/templatemo.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% endblock %}
+
+

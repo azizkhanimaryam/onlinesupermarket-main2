@@ -1,0 +1,13 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block content %}
+<h1>Edit Cart {{ cart.id }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="{% url 'cart_list' %}">Back to Cart List</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html> <!-- This ensures Standards Mode -->
+{% extends "layout_bikeproducts.html" %}
+{% load static %}
+<html lang="fa"> <!-- Setting the language to Persian (RTL support) -->
+
+    <meta charset="UTF-8"> <!-- Proper character encoding for Persian text -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- For responsive design -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Compatibility for IE -->
+
+
+{% block body_page %}
+<div class="container" style="min-height: 90vh; padding-top: 30px;">
+    <h1>نتایج جستجو برای "{{ query }}"</h1>
+    <div class="row">
+        {% if products %}
+            {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{% static 'img/placeholder.png' %}" class="card-img-top" alt="{{ product.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h2 class="card-title">{{ product.name }}</h2>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">قیمت: {{ product.price }} تومان</p>
+                            <a href="{% url 'product_detail' product.pk %}" class="btn btn-primary">ویژگی های محصول</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products found for your search.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
